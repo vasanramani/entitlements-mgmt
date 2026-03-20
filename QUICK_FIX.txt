@@ -1,0 +1,111 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                   DEPENDENCY CONFLICT RESOLUTION - QUICK FIX                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+PROBLEM:    npm install failing with dependency conflicts
+SOLUTION:   Run automated fix script or manual commands
+
+═══════════════════════════════════════════════════════════════════════════════
+
+EASIEST FIX (Windows PowerShell):
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
+  .\fix-dependencies.ps1
+
+═══════════════════════════════════════════════════════════════════════════════
+
+ALTERNATIVE #1 (Windows Command Prompt):
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
+  fix-dependencies.bat
+
+═══════════════════════════════════════════════════════════════════════════════
+
+ALTERNATIVE #2 (Manual - if scripts fail):
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
+  
+  cd backend
+  Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+  Remove-Item package-lock.json -ErrorAction SilentlyContinue
+  npm cache clean --force
+  npm install --legacy-peer-deps
+  cd ..
+  
+  cd frontend
+  Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+  Remove-Item package-lock.json -ErrorAction SilentlyContinue
+  npm cache clean --force
+  npm install --legacy-peer-deps
+  cd ..
+
+═══════════════════════════════════════════════════════════════════════════════
+
+ALTERNATIVE #3 (With Legacy Flag):
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
+  cd backend && npm install --legacy-peer-deps && cd ..
+  cd frontend && npm install --legacy-peer-deps && cd ..
+
+═══════════════════════════════════════════════════════════════════════════════
+
+VERIFY INSTALLATION:
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt\backend
+  npm list --depth=0                        (should show no ERR!)
+  
+  cd ..\frontend
+  npm list --depth=0                        (should show no ERR!)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TEST THE APPLICATION:
+
+  cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
+  npm run dev
+
+  Then open: http://localhost:4200
+
+═══════════════════════════════════════════════════════════════════════════════
+
+WHAT WAS FIXED:
+
+  ✅ backend/package.json      - 15 dependencies → exact versions
+  ✅ frontend/package.json     - 20 dependencies → exact versions
+  ✅ fix-dependencies.ps1      - PowerShell automation script
+  ✅ fix-dependencies.bat      - Batch automation script
+  ✅ fix-dependencies.sh       - Shell automation script
+  ✅ WINDOWS_INSTALL_GUIDE.md  - Windows-specific guide
+  ✅ DEPENDENCY_FIX_GUIDE.md   - Comprehensive reference
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK TROUBLESHOOTING:
+
+  Q: "npm: The term 'npm' is not recognized"
+  A: Install Node.js from https://nodejs.org (v20+ recommended)
+
+  Q: "PowerShell execution policy" error
+  A: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+  Q: Still getting errors after script runs
+  A: Try with --legacy-peer-deps flag: npm install --legacy-peer-deps
+
+  Q: Need to see what script does before running
+  A: Open fix-dependencies.ps1 in notepad (it's clearly commented)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+EXPECTED TIME: 5-10 minutes total
+
+RISK LEVEL: Very Low (only deletes node_modules and cache)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+For more information, see:
+  • WINDOWS_INSTALL_GUIDE.md  (Windows-specific)
+  • DEPENDENCY_FIX_GUIDE.md    (Comprehensive)
+
+Your dependencies are ready for installation! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════

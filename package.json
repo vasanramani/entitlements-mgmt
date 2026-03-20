@@ -1,0 +1,19 @@
+{
+  "name": "entitlements-management-system",
+  "version": "1.0.0",
+  "description": "Fine-grained entitlements management system with Angular frontend and Express backend",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "backend:dev": "npm run dev --prefix backend",
+    "frontend:dev": "npm run dev --prefix frontend",
+    "backend:build": "npm run build --prefix backend",
+    "frontend:build": "npm run build --prefix frontend",
+    "test": "npm test --prefix backend"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "concurrently": "^8.2.2"
+  }
+}

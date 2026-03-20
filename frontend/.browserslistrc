@@ -1,0 +1,5 @@
+# This file is not used in production. It's replaced with a blank file during build.
+# Browserslist configuration for development
+last 1 Chrome version
+last 1 Firefox version
+last 1 Safari version
