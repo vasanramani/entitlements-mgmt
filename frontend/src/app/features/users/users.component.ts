@@ -47,7 +47,7 @@ import { UserService, RoleService } from '../../core/services';
           <ng-container matColumnDef="roles">
             <th mat-header-cell *matHeaderCellDef>Roles</th>
             <td mat-cell *matCellDef="let user">
-              {{ user.userRoles?.map(ur => ur.role?.name).join(', ') || 'No roles' }}
+              {{ getRoleNames(user) }}
             </td>
           </ng-container>
 
@@ -100,6 +100,11 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(response => {
       this.users = response.data || [];
     });
+  }
+
+  getRoleNames(user: User) {
+    const names = (user.userRoles || []).map(ur => ur.role?.name).filter(n => !!n);
+    return names.length ? names.join(', ') : 'No roles';
   }
 
   openCreateDialog() {

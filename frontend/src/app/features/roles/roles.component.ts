@@ -245,16 +245,18 @@ export class RoleFormDialogComponent {
 @Component({
   selector: 'app-assign-entitlement-dialog',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatChipsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatChipsModule],
   template: `
     <h2 mat-dialog-title>Assign Entitlements to {{ data.role.name }}</h2>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Select Entitlement</mat-label>
       <mat-select [(value)]="selectedEntitlementId">
-        <mat-option>
-          <ngx-mat-select-search [ctrlToFilter]="filteredEntitlements"></ngx-mat-select-search>
+        <mat-option disabled>
+          <mat-form-field appearance="fill" class="search-field">
+            <input matInput placeholder="Search entitlements" [value]="filterText" (input)="filterEntitlements($any($event.target).value)" />
+          </mat-form-field>
         </mat-option>
-        <mat-option *ngFor="let ent of availableEntitlements" [value]="ent.id">
+        <mat-option *ngFor="let ent of filteredEntitlements" [value]="ent.id">
           {{ ent.name }}
         </mat-option>
       </mat-select>
@@ -270,6 +272,9 @@ export class RoleFormDialogComponent {
         width: 100%;
         margin-bottom: 15px;
       }
+      .search-field {
+        width: 100%;
+      }
       .button-group {
         display: flex;
         gap: 10px;
@@ -283,6 +288,7 @@ export class AssignEntitlementDialogComponent {
   selectedEntitlementId = '';
   availableEntitlements: Entitlement[] = [];
   filteredEntitlements: Entitlement[] = [];
+  filterText = '';
 
   constructor(
     private roleService: RoleService,
@@ -292,6 +298,16 @@ export class AssignEntitlementDialogComponent {
     const assignedIds = (data.role.roleEntitlements || []).map((re: any) => re.entitlement_id);
     this.availableEntitlements = (data.entitlements || []).filter((e: Entitlement) => !assignedIds.includes(e.id));
     this.filteredEntitlements = this.availableEntitlements;
+  }
+
+  filterEntitlements(text: string) {
+    this.filterText = text || '';
+    const q = this.filterText.trim().toLowerCase();
+    if (!q) {
+      this.filteredEntitlements = this.availableEntitlements;
+      return;
+    }
+    this.filteredEntitlements = this.availableEntitlements.filter(e => (e.name || '').toLowerCase().includes(q));
   }
 
   assign() {
