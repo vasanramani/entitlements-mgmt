@@ -7,7 +7,7 @@ import { Entitlement, ApiResponse } from '../../shared/models';
   providedIn: 'root',
 })
 export class EntitlementService {
-  private apiUrl = '/api/entitlements';
+  private apiUrl = 'http://localhost:3200/api/entitlements';
 
   constructor(private http: HttpClient) {}
 

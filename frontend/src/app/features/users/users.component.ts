@@ -93,6 +93,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService, private dialog: MatDialog) {}
 
   ngOnInit() {
+    console.log('UsersComponent initialized');
     this.loadUsers();
   }
 
@@ -100,6 +101,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(response => {
       this.users = response.data || [];
     });
+    console.log('Users loaded:', this.users);
   }
 
   getRoleNames(user: User) {

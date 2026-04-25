@@ -100,7 +100,7 @@ npm run dev
 
 1. **Backend verification:**
    ```bash
-   curl http://localhost:3000/api/health
+   curl http://localhost:3200/api/health
    ```
    Expected: `{"status":"healthy","timestamp":"..."}`
 

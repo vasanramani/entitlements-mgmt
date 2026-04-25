@@ -33,7 +33,7 @@ npm run dev
 ```
 
 This will start:
-- **Backend**: http://localhost:3000
+- **Backend**: http://localhost:3200
 - **Frontend**: http://localhost:4200
 
 ### Step 6: Open in Browser
@@ -98,24 +98,24 @@ Navigate to: **http://localhost:4200**
 
 ## 🔌 API Base URL
 ```
-http://localhost:3000/api
+http://localhost:3200/api
 ```
 
 ### Quick API Examples
 
 **Get all users:**
 ```powershell
-curl http://localhost:3000/api/users
+curl http://localhost:3200/api/users
 ```
 
 **Get all roles:**
 ```powershell
-curl http://localhost:3000/api/roles
+curl http://localhost:3200/api/roles
 ```
 
 **Get all entitlements:**
 ```powershell
-curl http://localhost:3000/api/entitlements
+curl http://localhost:3200/api/entitlements
 ```
 
 ---

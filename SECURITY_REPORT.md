@@ -244,10 +244,10 @@ npm test
 
 ### 1. Backend Verification
 ```bash
-curl http://localhost:3000/api/health
+curl http://localhost:3200/api/health
 # Expected: {"status":"healthy","timestamp":"..."}
 
-curl http://localhost:3000/api/entitlements
+curl http://localhost:3200/api/entitlements
 # Expected: List of entitlements with no errors
 ```
 

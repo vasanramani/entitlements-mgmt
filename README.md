@@ -111,7 +111,7 @@ cd backend
 npm run dev
 ```
 
-Backend will start on `http://localhost:3000`
+Backend will start on `http://localhost:3200`
 
 **Frontend** (in a new terminal):
 
@@ -195,7 +195,7 @@ The system automatically seeds the following entitlements on first run:
 ### 1. Create Entitlements (Auto-seeded, but you can add more)
 
 ```bash
-curl -X POST http://localhost:3000/api/entitlements \
+curl -X POST http://localhost:3200/api/entitlements \
   -H "Content-Type: application/json" \
   -d '{"name":"export","description":"Export data"}'
 ```
@@ -203,7 +203,7 @@ curl -X POST http://localhost:3000/api/entitlements \
 ### 2. Create Roles
 
 ```bash
-curl -X POST http://localhost:3000/api/roles \
+curl -X POST http://localhost:3200/api/roles \
   -H "Content-Type: application/json" \
   -d '{"name":"editor","description":"Editor role"}'
 ```
@@ -212,11 +212,11 @@ curl -X POST http://localhost:3000/api/roles \
 
 ```bash
 # Get the role and entitlement IDs first
-curl http://localhost:3000/api/roles
-curl http://localhost:3000/api/entitlements
+curl http://localhost:3200/api/roles
+curl http://localhost:3200/api/entitlements
 
 # Then add entitlement to role
-curl -X POST http://localhost:3000/api/roles/{roleId}/entitlements \
+curl -X POST http://localhost:3200/api/roles/{roleId}/entitlements \
   -H "Content-Type: application/json" \
   -d '{"entitlementId":"{entitlementId}"}'
 ```
@@ -224,7 +224,7 @@ curl -X POST http://localhost:3000/api/roles/{roleId}/entitlements \
 ### 4. Create User
 
 ```bash
-curl -X POST http://localhost:3000/api/users \
+curl -X POST http://localhost:3200/api/users \
   -H "Content-Type: application/json" \
   -d '{
     "username":"alice",
@@ -236,7 +236,7 @@ curl -X POST http://localhost:3000/api/users \
 ### 5. Assign Role to User
 
 ```bash
-curl -X POST http://localhost:3000/api/users/{userId}/roles \
+curl -X POST http://localhost:3200/api/users/{userId}/roles \
   -H "Content-Type: application/json" \
   -d '{"roleId":"{roleId}"}'
 ```

@@ -7,7 +7,7 @@ import { User, ApiResponse } from '../../shared/models';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = '/api/users';
+  private apiUrl = 'http://localhost:3200/api/users';
 
   constructor(private http: HttpClient) {}
 

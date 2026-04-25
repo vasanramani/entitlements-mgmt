@@ -109,7 +109,7 @@ npm run dev
 
 Expected output:
 ```
-Backend server running on http://localhost:3000
+Backend server running on http://localhost:3200
 Frontend running on http://localhost:4200
 ```
 

@@ -235,7 +235,7 @@ cd C:\Dev\VSCodeProjects\CoPilot\entitlements-mgmt
 npm run dev
 ```
 
-- Backend should start on http://localhost:3000
+- Backend should start on http://localhost:3200
 - Frontend should start on http://localhost:4200
 - Browser should open with dashboard
 
